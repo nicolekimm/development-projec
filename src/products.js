@@ -7,7 +7,7 @@ export default [
       price: 5.99,
       image: 'https://images.unsplash.com/photo-1524593166156-312f362cada0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
       season: 'Spring',
-      size: 'Medium',
+      size: 'Small',
       count: 0,
     }, 
     {
@@ -34,7 +34,7 @@ export default [
       price: 3.50,
       image: 'https://images.unsplash.com/photo-1438274754346-45322cac87e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
       season: 'Summer',
-      size: 'Medium',
+      size: 'Large',
       count: 0,
     }, 
     {
@@ -42,7 +42,7 @@ export default [
       cost: '$7.99',
       price: 7.99,
       image: 'https://images.unsplash.com/photo-1578830610522-c0d6763f92a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
-      season: 'Winter',
+      season: 'Summer',
       size: 'Medium',
       count: 0,
     }, 
@@ -70,7 +70,7 @@ export default [
       price: 0.99,
       image: 'https://images.unsplash.com/photo-1515356956468-873dd257f911?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
       season: 'Fall',
-      size: 'Large',
+      size: 'Small',
       count: 0,
     }, 
     {

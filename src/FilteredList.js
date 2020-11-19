@@ -12,7 +12,8 @@ class FilteredList extends Component {
         this.state = {
           products: this.props.products,
           sortMode: "unsorted",
-          filterMode: "unfiltered",
+          filterSeason: "unfiltered",
+          filterSize: "unfiltered",
           items: {},
         };
     }
@@ -94,21 +95,105 @@ class FilteredList extends Component {
     
     /* filterProduct - This method takes all the products and returns
     a function that indicates how the items should be filtered based on 
-    their filterMode. */ 
+    their filterSeason and filterSize. */ 
     filterProduct = products => {
-      if (this.state.filterMode === "filterSpring") {
+      if (this.state.filterSeason === "filterSpring") {
+        if (this.state.filterSize === "filterSmall") {
+          return (item => (item.season === "Spring" 
+            && item.size === "Small"));
+        }
+        if (this.state.filterSize === "filterMedium") {
+          return (item => (item.season === "Spring" 
+            && item.size === "Medium"));
+        }
+        if (this.state.filterSize === "filterLarge") {
+          return (item => (item.season === "Spring" 
+            && item.size === "Large"));
+        }
         return (item => item.season === "Spring");
-      } else if (this.state.filterMode === "filterSummer") {
+      } else if (this.state.filterSeason === "filterSummer") {
+        if (this.state.filterSize === "filterSmall") {
+          return (item => (item.season === "Summer" 
+            && item.size === "Small"));
+        }
+        if (this.state.filterSize === "filterMedium") {
+          return (item => (item.season === "Summer" 
+            && item.size === "Medium"));
+        }
+        if (this.state.filterSize === "filterLarge") {
+          return (item => (item.season === "Summer" 
+            && item.size === "Large"));
+        }
         return (item => item.season === "Summer");
-      } else if (this.state.filterMode === "filterFall"){
+      } else if (this.state.filterSeason === "filterFall"){
+        if (this.state.filterSize === "filterSmall") {
+          return (item => (item.season === "Fall" 
+            && item.size === "Small"));
+        }
+        if (this.state.filterSize === "filterMedium") {
+          return (item => (item.season === "Fall"
+            && item.size === "Medium"));
+        }
+        if (this.state.filterSize === "filterLarge") {
+          return (item => (item.season === "Fall"
+            && item.size === "Large"));
+        }
         return (item => item.season === "Fall");
-      } else if (this.state.filterMode === "filterWinter") {
+      } else if (this.state.filterSeason === "filterWinter") {
+        if (this.state.filterSize === "filterSmall") {
+          return (item => (item.season === "Winter" 
+            && item.size === "Small"));
+        }
+        if (this.state.filterSize === "filterMedium") {
+          return (item => (item.season === "Winter"
+            && item.size === "Medium"));
+        }
+        if (this.state.filterSize === "filterLarge") {
+          return (item => (item.season === "Winter"
+            && item.size === "Large"));
+        }
         return (item => item.season === "Winter");
-      } else if (this.state.filterMode === "filterSmall") {
+      } else if (this.state.filterSize === "filterSmall") {
+        if (this.state.filterSeason === "filterSpring") {
+          return (item => (item.size === "Small" && item.season === "Spring"));
+        }
+        if (this.state.filterSeason === "filterSummer") {
+          return (item => (item.size === "Small" && item.season === "Summer"));
+        }
+        if (this.state.filterSeason === "filterFall") {
+          return (item => (item.size === "Small" && item.season === "Fall"));
+        }
+        if (this.state.filterSeason === "filterWinter") {
+          return (item => (item.size === "Small" && item.season === "Winter"));
+        }
         return (item => item.size === "Small");
-      } else if (this.state.filterMode === "filterMedium") {
+      } else if (this.state.filterSize === "filterMedium") {
+        if (this.state.filterSeason === "filterSpring") {
+          return (item => (item.size === "Medium" && item.season === "Spring"));
+        }
+        if (this.state.filterSeason === "filterSummer") {
+          return (item => (item.size === "Medium" && item.season === "Summer"));
+        }
+        if (this.state.filterSeason === "filterFall") {
+          return (item => (item.size === "Medium" && item.season === "Fall"));
+        }
+        if (this.state.filterSeason === "filterWinter") {
+          return (item => (item.size === "Medium" && item.season === "Winter"));
+        }
         return (item => item.size === "Medium");
-      } else if (this.state.filterMode === "filterLarge") {
+      } else if (this.state.filterSize === "filterLarge") {
+        if (this.state.filterSeason === "filterSpring") {
+          return (item => (item.size === "Large" && item.season === "Spring"));
+        }
+        if (this.state.filterSeason === "filterSummer") {
+          return (item => (item.size === "Large" && item.season === "Summer"));
+        }
+        if (this.state.filterSeason === "filterFall") {
+          return (item => (item.size === "Large" && item.season === "Fall"));
+        }
+        if (this.state.filterSeason === "filterWinter") {
+          return (item => (item.size === "Large" && item.season === "Winter"));
+        }
         return (item => item.size === "Large");
       } else {
         return () => this.props.products;
@@ -120,26 +205,37 @@ class FilteredList extends Component {
             <div>
             <div className="list">
             <Card style={{ width: '18rem' }}>
-            <Card.Header>Filter:</Card.Header>
+            <Card.Header>Filter by Season:</Card.Header>
             <ListGroup variant="flush">
               {/*These ListGroupItems are filter buttons (filter on either season or size)
-              that change the state's filterMode depending on what button the user clicks*/}
+              that change the state's filterSize/filterSeason depending on what button the user clicks*/}
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterSpring"})}>Spring Season</ListGroupItem>
+              this.setState({filterSeason: "filterSpring"})}>Spring Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterSummer"})}>Summer Season</ListGroupItem>
+              this.setState({filterSeason: "filterSummer"})}>Summer Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterFall"})}>Fall Season</ListGroupItem>
+              this.setState({filterSeason: "filterFall"})}>Fall Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterWinter"})}>Winter Season</ListGroupItem>
+              this.setState({filterSeason: "filterWinter"})}>Winter Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterSmall"})}>Small Size</ListGroupItem>
+              this.setState({filterSeason: "unfiltered", filterSize: "unfiltered", sortMode:"unsorted"})}>All</ListGroupItem>
+            </ListGroup>
+            </Card>
+            </div>
+            <div className="list-2">
+            <Card style={{ width: '18rem' }}>
+            <Card.Header>Filter by Size:</Card.Header>
+            <ListGroup variant="flush">
+              {/*These ListGroupItems are filter buttons (filter on either season or size)
+              that change the state's filterSize/filterSeason depending on what button the user clicks*/}
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterMedium"})}>Medium Size </ListGroupItem>
+              this.setState({filterSize: "filterSmall"})}>Small Size</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "filterLarge"})}>Large Size</ListGroupItem>
+              this.setState({filterSize: "filterMedium"})}>Medium Size </ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterMode: "unfiltered", sortMode:"unsorted"})}>All</ListGroupItem>
+              this.setState({filterSize: "filterLarge"})}>Large Size</ListGroupItem>
+            <ListGroupItem action onClick={()=> 
+              this.setState({filterSeason: "unfiltered", filterSize: "unfiltered", sortMode:"unsorted"})}>All</ListGroupItem>
             </ListGroup>
             </Card>
             </div>
