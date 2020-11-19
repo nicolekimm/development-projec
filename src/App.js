@@ -15,7 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>The Pro-fresh-inal Market </h1>
+        <h1>
+          <div className="title">The Pro-fresh-inal Market </div>
+        </h1>
         <div className="filter-and-sort">
         <FilteredList products = {products} > </FilteredList>
         </div>
