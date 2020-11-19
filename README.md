@@ -1,70 +1,10 @@
-# Getting Started with Create React App
+# README Questions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My app contains three main files: App.js, FilteredList.js, and products.js. The products.js file contains an array of the products for the website which is then imported and passed to the App.js file. In the App.js file, the array of the products is passed to the FilteredList component. The FilteredList.js file contains all the filtering/sorting/aggregator methods, and it also maps each product that is passed from the App.js to a React Card component for render. 
 
-## Available Scripts
+Organization of Components: The FilteredList.js file contains several components. For filtering the products by season or size, I have a ListGroup component, which contains ListGroupItems that each correspond to a specific season or size. I also use a ListGroupItem to revert the website back to its original state. For sorting the product based on price (either low to high or high to low), I use a Dropdown component. To display each item in the website (both for items in the shopping cart as well as in the inventory), I use a Card component. For items in the inventory, the Card component also includes a Button component that allows users to add items to the cart. For items in the shopping cart, the Card component includes a Button component that allows users to either remove, add, or see the quantity of the items in the cart. For these buttons, there is a "-" button and a "Remove" button. The difference between these buttons is that the "-" button allows the user to manually decrement the quantity of the item whereas the "Remove" button removes the product altogether from the shopping cart regardless of the original quantity of the item in the cart. 
 
-In the project directory, you can run:
+How data is passed down through components: As mentioned before, the products.js file is imported in the App.js file which then passes the products array to the FilteredList component. Thus, the FilteredList.js is able to access the products array through props. For the state in the FilteredList.js file, I have products, sortMode, filterMode, and items. The products is the products array accessed by this.props.products. The sortMode and the filterMode are strings that are initially set to "unsorted" and "unfiltered." These modes are important because they are used to determine how the products are sorted/filtered on the website. For instance, the sortByPrice method checks the state's sortMode and then returns the corresponding sorting function that is then passed to the sort function later on. Finally, items is a dictionary that keeps track of the products in the shopping cart. The key in the items dictionary correspond to the product's name, and the value corresponds to the product itself. The dictionary is convenient to use because I can easily look up if a product exists in the shopping cart, and if so, I can check the value which is the product, and then access the fields of the product, including the product name, cost, price, image, season, size, and product count.  
 
-### `npm start`
+How user interactions can trigger changes in the state of components: The items dictionary changes state when the user clicks on either the Add to Cart button, the Remove button, the "-" button, or the "+" button. Whenever the user presses the Add to Cart button or the "+" button, the items dictionary adds a new key value pair in the dictionary if the key (which corresponds to the product's name) doesn't already exist in the dictionary. Whenever a user presses the Remove button, the items dictionary removes the corresponding key value pair. Finally, whenever a user presses the "-" button, the product count either decrements by 1 if the product count is already greater than 1 or the items dictionary removes the corresponding key value pair if the product count is less than 1 (because pressing the "-" button at this point would indicate 0 quantity of that particular item in the shopping cart). In addition to these buttons, users also trigger changes in the state's sortMode or the filterMode whenever they press a sort button or a filter button. For instance, if a user presses the "Winter Season" button, the filterMode is then set to "filterWinter." 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
