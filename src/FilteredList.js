@@ -200,6 +200,10 @@ class FilteredList extends Component {
       }
     }
 
+    isActiveFilter = name => {
+      return (name === this.state.filterSeason || name === this.state.filterSize);
+    }
+
     render() {
         return (
             <div>
@@ -210,13 +214,13 @@ class FilteredList extends Component {
               {/*These ListGroupItems are filter buttons (filter on either season or size)
               that change the state's filterSize/filterSeason depending on what button the user clicks*/}
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSeason: "filterSpring"})}>Spring Season</ListGroupItem>
+              this.setState({filterSeason: "filterSpring"})} active={this.isActiveFilter("filterSpring")}>Spring Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSeason: "filterSummer"})}>Summer Season</ListGroupItem>
+              this.setState({filterSeason: "filterSummer"})} active={this.isActiveFilter("filterSummer")}>Summer Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSeason: "filterFall"})}>Fall Season</ListGroupItem>
+              this.setState({filterSeason: "filterFall"})} active={this.isActiveFilter("filterFall")}>Fall Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSeason: "filterWinter"})}>Winter Season</ListGroupItem>
+              this.setState({filterSeason: "filterWinter"})} active={this.isActiveFilter("filterWinter")}>Winter Season</ListGroupItem>
             <ListGroupItem action onClick={()=> 
               this.setState({filterSeason: "unfiltered", filterSize: "unfiltered", sortMode:"unsorted"})}>All</ListGroupItem>
             </ListGroup>
@@ -229,11 +233,11 @@ class FilteredList extends Component {
               {/*These ListGroupItems are filter buttons (filter on either season or size)
               that change the state's filterSize/filterSeason depending on what button the user clicks*/}
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSize: "filterSmall"})}>Small Size</ListGroupItem>
+              this.setState({filterSize: "filterSmall"})} active={this.isActiveFilter("filterSmall")}>Small Size</ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSize: "filterMedium"})}>Medium Size </ListGroupItem>
+              this.setState({filterSize: "filterMedium"})} active={this.isActiveFilter("filterMedium")}>Medium Size </ListGroupItem>
             <ListGroupItem action onClick={()=> 
-              this.setState({filterSize: "filterLarge"})}>Large Size</ListGroupItem>
+              this.setState({filterSize: "filterLarge"})} active={this.isActiveFilter("filterLarge")}>Large Size</ListGroupItem>
             <ListGroupItem action onClick={()=> 
               this.setState({filterSeason: "unfiltered", filterSize: "unfiltered", sortMode:"unsorted"})}>All</ListGroupItem>
             </ListGroup>
