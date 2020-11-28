@@ -36,6 +36,7 @@ class FilteredList extends Component {
     dictionary. */
     removeFromCart = key => {
       const items = this.state.items;
+      items[key].count = 0;
       if (items[key]) {
         delete items[key]
       }
