@@ -57,7 +57,8 @@ class FilteredList extends Component {
         //quantity is 1 or more in shopping cart
         product.count = product.count -1;
       } else {
-          delete items[product.name]
+        product.count = 0;
+        delete items[product.name];
       }
       this.setState({ items });
     }
